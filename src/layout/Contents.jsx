@@ -20,6 +20,7 @@ import DetailPage from "../components/etailpage/DetailPage";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import UpdateWrite from "../components/write/UpdateWrite";
 
 const Contents = () => {
   const [test, setTest] = useState([]);
@@ -69,6 +70,7 @@ const Contents = () => {
           element={<DetailPage test={test} setTest={setTest} />}
         />
         <Route path="/write" element={<Write />} />
+        <Route path="/upwrite" element={<UpdateWrite />} />
 
         <Route path="/inquiry" element={<Inquiry />} />
         <Route
