@@ -11,6 +11,7 @@ const DetailPage = ({ test, setTest }) => {
   const [boardtext, setBoardText] = useState([]);
   const [comment, setComment] = useState("");
   const [comList, setComList] = useState([]);
+
   const fetchUsers = async () => {
     const response2 = await axios.get(
       `http://localhost:7999/board/coin/b/getid/comment?id=${location.state.number}`
@@ -26,6 +27,8 @@ const DetailPage = ({ test, setTest }) => {
     fetchUsers();
   }, []);
   const aaa = sessionStorage.getItem("logined") == boardtext.author;
+
+  const bbb = (ccc) => sessionStorage.getItem("logined") == ccc;
 
   const deleteList = async () => {
     const response = await axios.delete(
@@ -47,14 +50,16 @@ const DetailPage = ({ test, setTest }) => {
       author: sessionStorage.getItem("logined"),
       id: `${location.state.number}`,
     });
-    console.log(
-      "contents " +
-        comment +
-        " author " +
-        sessionStorage.getItem("logined") +
-        " id " +
-        `${location.state.number}`
-    );
+    window.location.reload();
+  };
+
+  const comdelete = (x) => {
+    axios.delete(`http://localhost:7999/board/coin/b/delete/comment`, {
+      data: {
+        id: x,
+        author: sessionStorage.getItem("logined"),
+      },
+    });
     window.location.reload();
   };
 
@@ -65,55 +70,71 @@ const DetailPage = ({ test, setTest }) => {
       </div>
       <div className="DetailPagelist">
         <div className="DetailPagelistdiv">
-          <span>작성자:{boardtext.author}</span>
-          <span>날짜:{boardtext.date}</span>
-          <span>조회수: 5 </span>
+          <span>작성자:</span>
+          <span>{boardtext.author}</span>
+          <span>날짜:</span>
+          <span>{boardtext.date}</span>
+          <div className="asddgiuhi23">
+            {aaa ? (
+              <>
+                <Link
+                  to={"/upwrite"}
+                  state={{ number: boardtext.id }}
+                  className="DetailPageButton1"
+                >
+                  수정 &nbsp;&nbsp;
+                </Link>
+
+                <button
+                  className="DetailPageButton2"
+                  onClick={() => {
+                    deleteList();
+                  }}
+                >
+                  삭제
+                </button>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
       </div>
       <hr className="DetailPageHr" />
-      <div className="DetailPage_List_cjah">{boardtext.contents}</div>
-      <div className="DetailPageButton">
-        <div>
-          {aaa ? (
-            <>
-              <Link
-                to={"/upwrite"}
-                state={{ number: boardtext.id }}
-                className="DetailPageButton1"
-              >
-                수정
-              </Link>
-
-              <button
-                className="DetailPageButton2"
-                onClick={() => {
-                  deleteList();
-                }}
-              >
-                삭제
-              </button>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
+      <div className="DetailPage_List_cjah_div">
+        <div className="DetailPage_List_cjah">{boardtext.contents}</div>
       </div>
+      <div className="DetailPageButton"></div>
 
       <div className="DetailPage_Booot">
         <div className="DetailPage_BoootMaindiv">
           <div>댓글</div>
-          <div>등록순</div>
-          <div>최신순</div>
-          <div>새로고침</div>
         </div>
         <hr className="DetailPageHr" />
         <tbody className="DetailPage_BoootList">
           {comList.map((list) => (
-            <tr key={list.id}>
-              <td>{list.id}</td>
-              <td>{list.contents}</td>
-              <td>{list.author}</td>
-              <td>{list.date}</td>
+            <tr className="DetailPageTd" key={list.id}>
+              <td className="trdiv1">{list.author}</td>
+
+              <td className="trdiv2">{list.date}</td>
+
+              <td className="trdiv3">{list.contents} </td>
+              <td className="trdiv4">
+                {bbb(list.author) ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        comdelete(list.id);
+                      }}
+                    >
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </button>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

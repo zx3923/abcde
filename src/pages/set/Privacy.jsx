@@ -83,15 +83,19 @@ const Privacy = () => {
 
                 if (lonned.data == true) {
                   setLonned(lonned.data);
+                  console.log(lonned.data);
 
                   alert("비밀번호 변경완료");
+                  setLonned(false);
+                  sessionStorage.clear();
+
+                  navigate("/");
+                  window.location.reload();
                 } else if (lonned.data == false) {
                   setLonned(lonned.data);
-
                   alert("비밀번호를 확인해주세요");
                 }
-              }}
-            >
+              }}>
               수정하기
             </button>
           </div>

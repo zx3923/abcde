@@ -36,6 +36,7 @@ const Write = () => {
     console.log(check);
     setAuthor(check);
   }, []);
+  const showValue = () => {};
   return (
     <div className="select-MainDiv">
       <div class="con">
@@ -49,8 +50,7 @@ const Write = () => {
                 aria-label="게시판목록"
                 onChange={(e) => {
                   setSelectBoard(e.target.value);
-                }}
-              >
+                }}>
                 <option value="">게시판 목록</option>
                 <option value="M">--------------------</option>
                 <option value="stockMarket">국내 주식 정보</option>
@@ -58,7 +58,7 @@ const Write = () => {
                 <option value="stockMarket">주식 게시판</option>
                 <option value="M">--------------------</option>
                 <option value="coin">코인 정보</option>
-                <option value="coin">코인 게시판</option>
+                <option value="boardcoin">코인 게시판</option>
                 <option value="M">--------------------</option>
                 <option value="news">선물/마진 벙보</option>
                 <option value="news">선물/마진 게시판</option>
@@ -104,8 +104,8 @@ const Write = () => {
               className="Write_button1"
               onClick={() => {
                 post();
-              }}
-            >
+                console.log(subject, contents, author);
+              }}>
               작성 하기
             </button>
             <button
@@ -113,8 +113,7 @@ const Write = () => {
               type="button"
               onclick={() => {
                 navigate(-1);
-              }}
-            >
+              }}>
               돌아기기
             </button>
           </div>

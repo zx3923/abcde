@@ -56,18 +56,17 @@ const UpdateWrite = () => {
   return (
     <div className="select-MainDiv">
       <div class="con">
-        <h1>게시글 작성</h1>
+        <h1>수정 페이지</h1>
         <div class="article-write">
           <form>
             <div className="write_list">
               <select
                 className="write_select"
-                id=""
+                value={selectBoard}
                 aria-label="게시판목록"
                 onChange={(e) => {
                   setSelectBoard(e.target.value);
-                }}
-              >
+                }}>
                 <option value="">게시판 목록</option>
                 <option value="M">--------------------</option>
                 <option value="stockMarket">국내 주식 정보</option>
@@ -122,8 +121,7 @@ const UpdateWrite = () => {
               className="Write_button1"
               onClick={() => {
                 patch();
-              }}
-            >
+              }}>
               수정 하기
             </button>
             <button
@@ -131,8 +129,7 @@ const UpdateWrite = () => {
               type="button"
               onclick={() => {
                 navigate(-1);
-              }}
-            >
+              }}>
               돌아기기
             </button>
           </div>

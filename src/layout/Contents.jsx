@@ -27,7 +27,6 @@ const Contents = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [userId, setUserId] = useState("");
-
   const fetchUsers = async () => {
     const response = await axios.get("http://localhost:7999/board/coin/b/get");
     setTest(response.data); // 데이터는 response.data 안에 들어있습니다.
@@ -35,7 +34,6 @@ const Contents = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-
   return (
     <div>
       <Routes>
@@ -75,11 +73,9 @@ const Contents = () => {
         <Route path="/inquiry" element={<Inquiry />} />
         <Route
           path="/privacy"
-          element={<Privacy userId={userId} setUserId={setUserId} />}
-        ></Route>
+          element={<Privacy userId={userId} setUserId={setUserId} />}></Route>
       </Routes>
     </div>
   );
 };
-
 export default Contents;

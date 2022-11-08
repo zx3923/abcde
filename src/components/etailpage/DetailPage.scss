@@ -13,23 +13,28 @@
   .DetailPagelistdiv {
     display: flex;
     width: 100%;
+    span {
+    }
     span:nth-child(1) {
-      width: 30%;
-      margin-right: 20px;
+      width: 80px;
     }
     span:nth-child(2) {
-      width: 40%;
+      width: 80px;
+      font-weight: bold;
+      margin-right: 30px;
     }
     span:nth-child(3) {
-      text-align: end;
-      width: 100%;
+      width: 60px;
+    }
+    span:nth-child(4) {
+      font-weight: bold;
+      margin-right: 0px;
     }
   }
 }
-
 .DetailPage_List_cjah {
   width: 100%;
-  height: 100%;
+
   margin-top: 20px;
 }
 .DetailPageButton {
@@ -47,23 +52,8 @@
   }
 }
 
-.DetailPage_BoootList {
-  margin-top: 20px;
-  width: 100%;
-  margin-bottom: 20px;
-
-  li {
-    width: 100%;
-    margin-top: 8px;
-    margin-bottom: 8px;
-
-    .DetailPageIcon {
-      float: right;
-      margin-right: 10px;
-    }
-  }
-}
 .DetailPage_Booot {
+  width: 100%;
   .DetailPage_BoootMaindiv {
     width: 100%;
     font-size: 15px;
@@ -100,9 +90,9 @@
   .DetailPage_button1 {
     flex: 1;
 
-    background-color: #848484;
-    border-radius: 20px;
-    border: 1px solid #848484;
+    background-color: #424242;
+    border-radius: 3px;
+    border: 1px solid #424242;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
@@ -111,4 +101,39 @@
     padding: 9px 23px;
     font-weight: bold;
   }
+}
+
+.DetailPageTd {
+  td {
+    padding: 5px;
+  }
+  td:nth-child(1) {
+    width: 100px;
+    text-align: start;
+    font-size: 15px;
+  }
+
+  td:nth-child(2) {
+    width: 100%;
+    text-align: start;
+    display: flex;
+    margin-top: 10px;
+
+    font-size: 12px;
+  }
+
+  td:nth-child(3) {
+    width: 100%;
+    text-align: start;
+    display: flex;
+  }
+  td:nth-child(4) {
+    width: 1%;
+    align-items: flex-end;
+  }
+}
+.asddgiuhi23 {
+  text-align: end;
+  width: 100%;
+  font-weight: bold;
 }
