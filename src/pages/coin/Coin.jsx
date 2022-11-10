@@ -1,28 +1,24 @@
 import "./Coin.scss";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Coin = ({ test, loading, error, setError, setLoading }) => {
-  const aaa = async () => {
-    try {
-      setLoading(true);
-    } catch (e) {
-      setError(e);
-    }
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    aaa();
-  }, []);
-  if (loading) return <div>로딩중</div>;
-  if (error) return <div>에러</div>;
-  if (!test) return null;
+  const [lonned, setLonned] = useState(false);
+  const navigate = useNavigate();
 
   test.sort(function (a, b) {
     return b.id - a.id;
   });
+
+  const registerd = () => {
+    if (sessionStorage.getItem("logined") || false) {
+      navigate("/Write");
+    } else if (sessionStorage.getItem("logined") || true) {
+      alert("로그인 해주세요");
+    }
+  };
   return (
     <div class="Coin">
       <div className="CoinTitel">
@@ -31,13 +27,13 @@ const Coin = ({ test, loading, error, setError, setLoading }) => {
         </div>
       </div>
       <div className="meailinputton">
-        <input placeholder="찾을내용을 입력하세요" type="text" />
-        <button>
-          <ZoomInIcon />
+        <button
+          className="CoinListbutton"
+          onClick={() => {
+            registerd();
+          }}>
+          글쓰기
         </button>
-        <a href="/write">
-          <button className="CoinListbutton">글쓰기</button>
-        </a>
       </div>
       <table class="tbl_type">
         <caption>게시판 리스트</caption>

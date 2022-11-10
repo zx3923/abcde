@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import axios from "axios";
 import "./Notice.scss";
 
 const Notice = () => {
@@ -22,11 +23,8 @@ const Notice = () => {
           </div>
         </div>
       </div>
+
       <div className="meailinputton">
-        <input placeholder="찾을내용을 입력하세요" type="text" />
-        <button>
-          <ZoomInIcon />
-        </button>
         <button className="NoticeListbutton">글쓰기</button>
       </div>
       <table class="tbl_type">

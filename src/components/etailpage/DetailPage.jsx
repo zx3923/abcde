@@ -45,14 +45,27 @@ const DetailPage = ({ test, setTest }) => {
     navigate(-1);
   };
   const compost = () => {
-    axios.post(`http://localhost:7999/board/coin/b/post/comment`, {
-      contents: comment,
-      author: sessionStorage.getItem("logined"),
-      id: `${location.state.number}`,
-    });
+    if (sessionStorage.getItem("user") || false) {
+      axios.post(`http://localhost:7999/board/coin/b/post/comment`, {
+        contents: comment,
+        author: sessionStorage.getItem("logined"),
+        id: `${location.state.number}`,
+      });
+
+      console.log(
+        "contents " +
+          comment +
+          " author " +
+          sessionStorage.getItem("logined") +
+          " id " +
+          `${location.state.number}`
+      );
+    } else if (sessionStorage.getItem("user") || true) {
+      alert("로그인 해주세요");
+    }
+    console.log(location.state.number);
     window.location.reload();
   };
-
   const comdelete = (x) => {
     axios.delete(`http://localhost:7999/board/coin/b/delete/comment`, {
       data: {
@@ -80,8 +93,7 @@ const DetailPage = ({ test, setTest }) => {
                 <Link
                   to={"/upwrite"}
                   state={{ number: boardtext.id }}
-                  className="DetailPageButton1"
-                >
+                  className="DetailPageButton1">
                   수정 &nbsp;&nbsp;
                 </Link>
 
@@ -89,8 +101,7 @@ const DetailPage = ({ test, setTest }) => {
                   className="DetailPageButton2"
                   onClick={() => {
                     deleteList();
-                  }}
-                >
+                  }}>
                   삭제
                 </button>
               </>
@@ -125,8 +136,7 @@ const DetailPage = ({ test, setTest }) => {
                     <button
                       onClick={() => {
                         comdelete(list.id);
-                      }}
-                    >
+                      }}>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </button>
@@ -154,8 +164,7 @@ const DetailPage = ({ test, setTest }) => {
           className="DetailPage_button1"
           onClick={() => {
             compost();
-          }}
-        >
+          }}>
           작성 하기
         </button>
       </div>

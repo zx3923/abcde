@@ -9,7 +9,6 @@ const SignUp = () => {
   const [userId, setUserId] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const registerd = () => {
     axios
@@ -27,9 +26,7 @@ const SignUp = () => {
         } else if (response.data == false) {
           alert("정보를 확인하세요");
         }
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        setTimeout(() => {}, 2000);
       });
   };
   return (

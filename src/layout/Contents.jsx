@@ -15,6 +15,7 @@ import Privacy from "../pages/set/Privacy";
 import BoardCoin from "../pages/coin/BoardCoin";
 import Write from "../components/write/Write";
 import "./Contents.scss";
+import Searchlist from "../pages/searchlist/Searchlist";
 import { Routes, Route } from "react-router-dom";
 import DetailPage from "../components/etailpage/DetailPage";
 import axios from "axios";
@@ -69,8 +70,8 @@ const Contents = () => {
         />
         <Route path="/write" element={<Write />} />
         <Route path="/upwrite" element={<UpdateWrite />} />
-
-        <Route path="/inquiry" element={<Inquiry />} />
+        <Route path="/write" element={<Write />} />
+        <Route path="/searchlist" element={<Searchlist />} />
         <Route
           path="/privacy"
           element={<Privacy userId={userId} setUserId={setUserId} />}></Route>
