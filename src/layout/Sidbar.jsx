@@ -121,13 +121,25 @@ const Sidbar = () => {
                     </span>
                   </div>
                   <div>
-                    <span class="span_high">
+                    <span
+                      style={
+                        test[0].signed_change_price > 0
+                          ? { color: "red" }
+                          : { color: "blue" }
+                      }
+                    >
                       {test[0].signed_change_price
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
                       원{" "}
                     </span>
-                    <span class="span_low">
+                    <span
+                      style={
+                        test[0].signed_change_rate > 0
+                          ? { color: "red" }
+                          : { color: "blue" }
+                      }
+                    >
                       {" "}
                       {(test[0].signed_change_rate.toFixed(3) * 100).toFixed(
                         2
@@ -160,13 +172,25 @@ const Sidbar = () => {
                       </span>
                     </div>
                     <div>
-                      <span class="span_high">
+                      <span
+                        style={
+                          test[1].signed_change_price > 0
+                            ? { color: "red" }
+                            : { color: "blue" }
+                        }
+                      >
                         {test[1].signed_change_price
                           .toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
                         원{" "}
                       </span>
-                      <span class="span_low">
+                      <span
+                        style={
+                          test[1].signed_change_rate > 0
+                            ? { color: "red" }
+                            : { color: "blue" }
+                        }
+                      >
                         {" "}
                         {(test[1].signed_change_rate.toFixed(3) * 100).toFixed(
                           2
@@ -197,13 +221,25 @@ const Sidbar = () => {
                     </span>
                   </div>
                   <div>
-                    <span class="span_high">
+                    <span
+                      style={
+                        test[2].signed_change_price > 0
+                          ? { color: "red" }
+                          : { color: "blue" }
+                      }
+                    >
                       {test[2].signed_change_price
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
                       원{" "}
                     </span>
-                    <span class="span_low">
+                    <span
+                      style={
+                        test[2].signed_change_rate > 0
+                          ? { color: "red" }
+                          : { color: "blue" }
+                      }
+                    >
                       {" "}
                       {(test[2].signed_change_rate.toFixed(3) * 100).toFixed(
                         2
