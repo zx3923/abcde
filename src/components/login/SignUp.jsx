@@ -31,7 +31,9 @@ const SignUp = () => {
   };
   return (
     <div className="SignUp">
-      <label for="my-modal">회원가입</label>
+      <label for="my-modal" class="SignUplable">
+        회원가입
+      </label>
 
       <input type="checkbox" id="my-modal" class="modal-toggle" />
       <div class="modal">

@@ -3,6 +3,8 @@ import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Coin = ({ test, loading, error, setError, setLoading }) => {
   const [lonned, setLonned] = useState(false);
@@ -21,60 +23,67 @@ const Coin = ({ test, loading, error, setError, setLoading }) => {
   };
   return (
     <div class="Coin">
-      <div className="CoinTitel">
-        <div className="CoinDiv">
-          <h1>코인 정보 게시판</h1>
-        </div>
-      </div>
-      <div className="meailinputton">
+      <div className="CoinDiv">
+        <h1>암호 화폐</h1>
         <button
           className="CoinListbutton"
           onClick={() => {
             registerd();
           }}>
-          글쓰기
+          + 글 쓰기
         </button>
       </div>
-      <table class="tbl_type">
-        <caption>게시판 리스트</caption>
+      <div className="CoinTitel">
+        <table class="tbl_type">
+          <caption>게시판 리스트</caption>
 
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">제목</th>
-            <th scope="col">글쓴이</th>
-            <th scope="col">날짜</th>
-            <th scope="col">조회수</th>
-          </tr>
-        </thead>
-        <tbody className="CoinTbody">
-          {test.map((Coin) => (
-            <tr key={Coin.id}>
-              <td> {Coin.id}</td>
-              <td>
-                <Link to={`/detailPage/${Coin.id}`} state={{ number: Coin.id }}>
-                  {Coin.subject}
-                </Link>
-              </td>
-              <td> {Coin.author}</td>
-              <td> {Coin.date}</td>
-              <td> {Coin.views}</td>
+          <thead>
+            <tr className="CoinTr">
+              <th scope="col">번호</th>
+              <th scope="col">제목</th>
+              <th scope="col">글쓴이</th>
+              <th scope="col">날짜</th>
+              <th scope="col">조회수</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="CoinTbody">
+            {test.map((Coin) => (
+              <tr key={Coin.id}>
+                <td> {Coin.id}</td>
+                <td>
+                  <Link
+                    to={`/detailPage/${Coin.id}`}
+                    state={{ number: Coin.id }}>
+                    {Coin.subject}
+                  </Link>
+                </td>
+                <td> {Coin.author}</td>
+                <td> {Coin.date}</td>
+                <td> {Coin.views}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="CoinEndDiv1">
-        <a href="">◀</a>
+        <div className="CoinEndDiv2">
+          <a href="">
+            <ChevronLeftIcon />
+            &nbsp;
+          </a>
 
-        <a href="">1</a>
+          <a href="">1</a>
 
-        <a href="">2</a>
+          <a href="">2</a>
 
-        <a href="">3</a>
+          <a href="">3</a>
 
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">▶</a>
+          <a href="">4</a>
+          <a href="">5</a>
+          <a href="">
+            <ChevronRightIcon />
+          </a>
+        </div>
       </div>
     </div>
   );

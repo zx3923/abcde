@@ -7,32 +7,34 @@ const Searchlist = () => {
   const location = useLocation();
   return (
     <div className="Searchlist">
-      <table>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>제목</th>
-            <th>글쓴이 </th>
-            <th>날짜</th>
-            <th>조회수</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="Searchlist_Div">
+        <div className="Searchlist_Div1">
           {location.state.test.map((hhh) => (
-            <tr key={hhh.id}>
-              <td>{hhh.id}</td>
-              <td>
+            <div className="earchlistMain" key={hhh}>
+              <div>
+                {" "}
                 <Link to={`../detailPage/${hhh.id}`} state={{ number: hhh.id }}>
                   {hhh.subject}
                 </Link>
-              </td>
-              <td>{hhh.author}</td>
-              <td>{hhh.date}</td>
-              <td>{hhh.views}</td>
-            </tr>
+              </div>
+              <div className="Searchlist_List">
+                <div>{hhh.lcategory} 게시판</div>
+                <div> | </div>
+                <div>{hhh.author}</div>
+                <div> | </div>
+                <div>{hhh.date}</div>
+                <div> | </div>
+                <div>조회 {hhh.views}</div>
+              </div>
+              <div className="Searchlist_Link">
+                <Link to={`../detailPage/${hhh.id}`} state={{ number: hhh.id }}>
+                  {hhh.contents}
+                </Link>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };

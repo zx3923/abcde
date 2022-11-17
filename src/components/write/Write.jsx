@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Write.jsx";
 import "./Write.scss";
 import axios from "axios";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 
 const Write = () => {
@@ -39,8 +40,13 @@ const Write = () => {
   const showValue = () => {};
   return (
     <div className="select-MainDiv">
+      <a href="">
+        <h1>
+          <ArrowBackIcon />
+          &nbsp; 암호 화폐
+        </h1>
+      </a>
       <div class="con">
-        <h1>게시글 작성</h1>
         <div class="article-write">
           <form>
             <div className="write_list">
@@ -53,22 +59,16 @@ const Write = () => {
                 }}>
                 <option value="">게시판 목록</option>
                 <option value="M">--------------------</option>
-                <option value="stockMarket">국내 주식 정보</option>
-                <option value="stockMarket">해외 주식 정보</option>
-                <option value="stockMarket">주식 게시판</option>
+                <option value="stockMarket">한국 주식 정보</option>
+                <option value="stockMarket">미국 주식 정보</option>
                 <option value="M">--------------------</option>
-                <option value="coin">코인 정보</option>
-                <option value="boardcoin">코인 게시판</option>
+                <option value="coin">암호 화폐 정보</option>
                 <option value="M">--------------------</option>
-                <option value="news">선물/마진 벙보</option>
-                <option value="news">선물/마진 게시판</option>
+                <option value="news">유머&잡담</option>
                 <option value="M">--------------------</option>
-                <option value="테스트8">자유 게시판</option>
-                <option value="테스트9">손익 게시판</option>
+                <option value="테스트8">AnTok 인기글</option>
                 <option value="M">--------------------</option>
-                <option value="테스트10">공지 사항</option>
-                <option value="테스트11">이벤트</option>
-                <option value="테스트12">문의</option>
+                <option value="테스트10">전문가의 방</option>
                 <option value="M">--------------------</option>
               </select>
               <div className="write_list_title">
@@ -99,6 +99,10 @@ const Write = () => {
               />
             </div>
           </form>
+
+          <div class="filebox">
+            <input type="file" id="ex_file" />
+          </div>
           <div className="Write_button">
             <button
               className="Write_button1"

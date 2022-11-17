@@ -12,9 +12,9 @@ import Notice from "../pages/notice/Notice";
 import Event from "../pages/notice/Event";
 import Inquiry from "../pages/notice/Inquiry";
 import Privacy from "../pages/set/Privacy";
-import BoardCoin from "../pages/coin/BoardCoin";
+
 import Write from "../components/write/Write";
-import "./Contents.scss";
+
 import Searchlist from "../pages/searchlist/Searchlist";
 import { Routes, Route } from "react-router-dom";
 import DetailPage from "../components/etailpage/DetailPage";
@@ -28,6 +28,7 @@ const Contents = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [userId, setUserId] = useState("");
+
   const fetchUsers = async () => {
     const response = await axios.get("http://localhost:7999/board/coin/b/get");
     setTest(response.data); // 데이터는 response.data 안에 들어있습니다.
@@ -36,7 +37,7 @@ const Contents = () => {
     fetchUsers();
   }, []);
   return (
-    <div>
+    <div class="Contents">
       <Routes>
         <Route
           path=""
@@ -58,7 +59,6 @@ const Contents = () => {
           }
         />
         <Route path="/margin" element={<Margin />} />
-        <Route path="/boardCoin" element={<BoardCoin />} />
         <Route path="/boardCoinMargin" element={<BoardCoinMargin />} />
         <Route path="/community" element={<Community />} />
         <Route path="/revenue" element={<Revenue />} />

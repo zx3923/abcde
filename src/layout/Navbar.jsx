@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./Navbar.scss";
+
 import LanguageIcon from "@mui/icons-material/Language";
 import axios from "axios";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import { useNavigate, Link } from "react-router-dom";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { atom, RecoilRoot, useRecoilState } from "recoil";
 import { recoilPersist } from "recoil-persist";
-
-import SignUp from "../login/SignUp";
+import SignUp from "../components/login/SignUp";
 const Navbar = () => {
   const [lonned, setLonned] = useState(false);
   const [userId, setUserId] = useState();
@@ -50,6 +47,59 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
+        <div class="menu-bar">
+          <div class="top-bar">
+            <div class="con flex flex-jc-sb height-100p">
+              <a href="#" class="logo top-bar__logo img-box flex flex-ai-c"></a>
+              <nav class="menu menu__menu-1">
+                <ul class="flex ">
+                  <a href="/">
+                    <img
+                      src="https://i.ibb.co/M9ZDk5c/zz.png"
+                      alt="zz"
+                      border="0"
+                      class="navbarRogo"
+                    />
+                  </a>
+                  <li>
+                    <a class="flexs " href="#">
+                      한국 증시
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="flex" href="#">
+                      미국 증시
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="flex" href="/Coin">
+                      암호 화폐
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="flex" href="#">
+                      유머&잡담
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="flex" href="#">
+                      인기글
+                    </a>
+                  </li>
+                  <li>
+                    <a class="flex" href="#">
+                      전문가의 방
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
         <div className="search1">
           <input
             placeholder="검색어를 입력해주세요"
@@ -73,10 +123,6 @@ const Navbar = () => {
         </div>
 
         <div className="items">
-          <div className="item">
-            <LanguageIcon className="icon" />
-            Korea
-          </div>
           <div className="Hader_Login1">
             {lonned ? (
               <>

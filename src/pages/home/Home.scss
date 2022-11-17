@@ -1,20 +1,239 @@
-.homeContainer {
-  gap: 20px;
-  padding: 50px 80px 50px 80px;
-}
-.chart {
-  display: flex;
-  padding: 0px 80px 50px 80px;
+.Home {
+  width: 100%;
+  height: 100vh;
 
-  gap: 20px;
+  .AnTokNews {
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+    margin-bottom: 30px;
+    background-color: white;
+    height: 300px;
+
+    .News {
+      border-bottom: 1px solid rgb(231, 231, 229);
+      font-weight: 900;
+
+      padding: 10px 0px 10px 20px;
+    }
+  }
+
+  .Homemiddr {
+    display: flex;
+
+    justify-content: space-between;
+    .Homemiddrtitle {
+      border-radius: 5px 5px 5px 5px;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+      margin-bottom: 30px;
+      background-color: white;
+      width: 49%;
+      height: 282px;
+      .Homemiddrspan {
+        display: flex;
+        width: 100%;
+        font-weight: 900;
+        border-bottom: 1px solid rgb(231, 231, 229);
+
+        padding: 10px 00px 17px 20px;
+        span:nth-child(1) {
+          font-size: 13px;
+          font-weight: 900;
+          color: #9a62e6;
+        }
+        span:nth-child(2) {
+          padding: 0px 0px 0px 20px;
+          font-size: 13px;
+          font-weight: 900;
+        }
+      }
+      .Homemiddrss {
+        border-bottom: 1px solid rgb(231, 231, 229);
+        font-weight: 900;
+        padding: 10px 0px 10px 20px;
+      }
+    }
+    .Homemiddrmddle {
+      border-radius: 5px 5px 5px 5px;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+      margin-bottom: 30px;
+      background-color: white;
+      width: 49%;
+      height: 282px;
+      .Homemiddrspan {
+        display: flex;
+        width: 100%;
+        font-weight: 900;
+        border-bottom: 1px solid rgb(231, 231, 229);
+
+        padding: 10px 00px 17px 20px;
+        span:nth-child(1) {
+          font-size: 13px;
+          font-weight: 900;
+          color: #9a62e6;
+        }
+        span:nth-child(2) {
+          padding: 0px 0px 0px 20px;
+          font-size: 13px;
+          font-weight: 900;
+        }
+      }
+      .Homemiddrmddless {
+        border-bottom: 1px solid rgb(231, 231, 229);
+        font-weight: 900;
+        padding: 10px 0px 10px 20px;
+      }
+    }
+  }
+  .Homemiddr1 {
+    display: flex;
+    justify-content: space-between;
+    div:nth-child(1) {
+      border-radius: 5px 5px 5px 5px;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+      margin-bottom: 30px;
+      background-color: white;
+      display: flex;
+      width: 49%;
+      height: 340px;
+    }
+    div:nth-child(2) {
+      border-radius: 5px 5px 5px 5px;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+      margin-bottom: 30px;
+      background-color: white;
+      display: flex;
+      width: 48%;
+    }
+  }
+  .Homelist {
+    border-radius: 5px 5px 5px 5px;
+    margin-bottom: 30px;
+    background-color: white;
+
+    height: 342px;
+    div:nth-child(1) {
+    }
+    div:nth-child(2) {
+    }
+  }
 }
-.Imageboard1 {
+.Newslist {
+  width: 100%;
+  padding: 20px 10px 20px 10px;
   display: flex;
-  padding: 0px 80px 50px 80px;
+
+  justify-content: space-around;
+  .Newsimg {
+    width: 30%;
+    img {
+      display: inline-block;
+      width: 100%;
+      height: 170px;
+      overflow: hidden;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    div {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+  }
 }
-.listContainer {
+
+.Homestock {
   display: flex;
-  padding: 0px 80px 50px 80px;
-  gap: 50px;
-  margin-bottom: 50px;
+
+  justify-content: space-between;
+  .Homestocktitle {
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+    margin-bottom: 30px;
+    background-color: white;
+    width: 49%;
+    height: 282px;
+    .Homestockspan {
+      display: flex;
+      width: 100%;
+      font-weight: 900;
+      border-bottom: 1px solid rgb(231, 231, 229);
+      padding: 10px 00px 17px 20px;
+      span:nth-child(1) {
+        font-size: 13px;
+        font-weight: 900;
+      }
+    }
+    .Homestockss {
+      border-bottom: 1px solid rgb(231, 231, 229);
+      font-weight: 900;
+      padding: 10px 0px 10px 20px;
+    }
+  }
+}
+
+.Homecoin {
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+  margin-bottom: 30px;
+  background-color: white;
+  width: 49%;
+  height: 282px;
+  .Homecoinspan {
+    display: flex;
+    width: 100%;
+    font-weight: 900;
+    border-bottom: 1px solid rgb(231, 231, 229);
+    padding: 10px 00px 17px 20px;
+    span:nth-child(1) {
+      font-size: 13px;
+      font-weight: 900;
+    }
+  }
+  .Homecoinss {
+    border-bottom: 1px solid rgb(231, 231, 229);
+    font-weight: 900;
+    padding: 10px 0px 10px 20px;
+  }
+}
+
+.Homelist {
+  display: flex;
+  .Homelisttitle {
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
+
+    margin-bottom: 0px;
+    background-color: white;
+
+    width: 100%;
+    .Homelistspan {
+      width: 100%;
+
+      font-weight: bolder;
+      border-bottom: 1px solid rgb(231, 231, 229);
+      padding: 10px 00px 5px 20px;
+      span:nth-child(2) {
+        font-size: 13px;
+        margin-top: 0.25rem;
+        color: #868e96;
+        font-size: 0.75rem;
+        margin-right: 10px;
+      }
+      span:nth-child(3) {
+        font-size: 13px;
+        margin-top: 0.25rem;
+        color: #868e96;
+        font-size: 0.75rem;
+      }
+    }
+    .Homelistss {
+      border-bottom: 1px solid rgb(231, 231, 229);
+      font-weight: 900;
+      padding: 10px 0px 10px 20px;
+    }
+  }
+}
+.Homelistspandiv {
+  font-size: 13px;
+  font-weight: 900;
 }

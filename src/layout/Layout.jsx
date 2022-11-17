@@ -1,18 +1,24 @@
-import React from "react";
-import "./Layout.scss";
-import Contents from "./Contents";
+import React, { useState, useEffect } from "react";
 
-import Navbar from "../components/navbar/Navbar";
-import Sidebar from "../components/sidebar/Sidebar";
+import Contents from "./Contents";
+import "./Layout.scss";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Sidbar from "./Sidbar";
 
 function Layout() {
   return (
     <div className="Layout">
-      <Sidebar />
       <div className="LayoutContainer">
         <Navbar />
-        <Contents />
+        <div class="Layoutcenter">
+          <Contents class="Contents" />
+          <div class="Layoutsson"></div>
+          <div class="asdasd">
+            <Sidbar class="Sidbar" />
+          </div>
+        </div>
+
         <Footer />
       </div>
     </div>

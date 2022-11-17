@@ -4,6 +4,7 @@ import "./DetailPage.scss";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Coin from "../../pages/coin/Coin";
 
 const DetailPage = ({ test, setTest }) => {
   const location = useLocation();
@@ -11,6 +12,9 @@ const DetailPage = ({ test, setTest }) => {
   const [boardtext, setBoardText] = useState([]);
   const [comment, setComment] = useState("");
   const [comList, setComList] = useState([]);
+  test.sort(function (a, b) {
+    return b.id - a.id;
+  });
 
   const fetchUsers = async () => {
     const response2 = await axios.get(
@@ -93,7 +97,8 @@ const DetailPage = ({ test, setTest }) => {
                 <Link
                   to={"/upwrite"}
                   state={{ number: boardtext.id }}
-                  className="DetailPageButton1">
+                  className="DetailPageButton1"
+                >
                   수정 &nbsp;&nbsp;
                 </Link>
 
@@ -101,7 +106,8 @@ const DetailPage = ({ test, setTest }) => {
                   className="DetailPageButton2"
                   onClick={() => {
                     deleteList();
-                  }}>
+                  }}
+                >
                   삭제
                 </button>
               </>
@@ -136,7 +142,8 @@ const DetailPage = ({ test, setTest }) => {
                     <button
                       onClick={() => {
                         comdelete(list.id);
-                      }}>
+                      }}
+                    >
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </button>
@@ -164,7 +171,8 @@ const DetailPage = ({ test, setTest }) => {
           className="DetailPage_button1"
           onClick={() => {
             compost();
-          }}>
+          }}
+        >
           작성 하기
         </button>
       </div>
