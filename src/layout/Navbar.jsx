@@ -62,36 +62,36 @@ const Navbar = () => {
                     />
                   </a>
                   <li>
-                    <a class="flexs " href="#">
+                    <a class="flexs " href="/Board/stock/dsi">
                       한국 증시
                     </a>
                   </li>
 
                   <li>
-                    <a class="flex" href="#">
+                    <a class="flex" href="/Board/stock/osi">
                       미국 증시
                     </a>
                   </li>
 
                   <li>
-                    <a class="flex" href="/Coin">
+                    <a class="flex" href="/Board/coin/ci">
                       암호 화폐
                     </a>
                   </li>
 
                   <li>
-                    <a class="flex" href="#">
+                    <a class="flex" href="/Board/community/fb">
                       유머&잡담
                     </a>
                   </li>
 
                   <li>
-                    <a class="flex" href="#">
+                    <a class="flex" href="/Board/community/hot">
                       인기글
                     </a>
                   </li>
                   <li>
-                    <a class="flex" href="#">
+                    <a class="flex" href="/Board/community/pro">
                       전문가의 방
                     </a>
                   </li>
@@ -114,8 +114,7 @@ const Navbar = () => {
               deleteList();
               setDeleteListsd();
               deleteList = { deleteList };
-            }}
-          >
+            }}>
             <Link>
               <ZoomInIcon />
             </Link>
@@ -135,8 +134,7 @@ const Navbar = () => {
                     setLonned(false);
 
                     sessionStorage.clear();
-                  }}
-                >
+                  }}>
                   로그아웃
                 </button>
               </>
@@ -150,8 +148,7 @@ const Navbar = () => {
                     <div class="modal-box relative">
                       <label
                         for="my-modal-1"
-                        class="btn-sm absolute right-6 top-9"
-                      >
+                        class="btn-sm absolute right-6 top-9">
                         ✕
                       </label>
 
@@ -219,8 +216,7 @@ const Navbar = () => {
                                 "userid",
                                 lonned.data.userId
                               );
-                            }}
-                          >
+                            }}>
                             {" "}
                             로그인{" "}
                           </label>

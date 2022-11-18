@@ -1,5 +1,5 @@
-.Coin {
-  .CoinDiv {
+.Board {
+  .BoardDiv {
     display: flex;
     font-size: 1.5rem !important;
     font-weight: 900;
@@ -26,58 +26,66 @@
   }
 }
 
-.CoinTitel {
+.BoardTitel {
   border-radius: 5px 5px 5px 5px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 10px 10px 10px;
   margin-bottom: 30px;
+
   background-color: white;
   height: 1089px;
   max-height: 1089px;
 }
 .tbl_type {
   thead {
-    .CoinTr {
-      th {
-        border: none;
-        color: #868e96;
-        font-weight: bold;
+    width: 100%;
+    .BoardTr {
+      height: 50px;
+      border-bottom: 1px solid rgb(231, 231, 229);
+
+      td {
+        text-align: center;
         font-size: 14px;
-        border-bottom: 1px solid rgb(231, 231, 229);
       }
     }
   }
 }
-
 .tbl_type {
   border: none;
   color: #868e96;
   font-weight: bold;
-  .CoinTbody {
+  width: 100%;
+
+  .BoardTbody {
     white-space: nowrap;
     border: none;
     color: #868e96;
     font-weight: bold;
+    width: 100%;
+
     tr {
       border-bottom: 1px solid rgb(231, 231, 229);
+
       td {
+        text-align: center;
         font-size: 14px;
+        padding: 15px 0px 15px 0px;
       }
       td:nth-child(1) {
-        width: 7%;
+        width: 10%;
       }
       td:nth-child(2) {
-        width: 40%;
-
-        text-align: justify;
+        width: 60%;
+        text-align: start;
+        color: black;
       }
       td:nth-child(3) {
-        width: 12%;
+        width: 10%;
       }
       td:nth-child(4) {
         width: 10%;
       }
       td:nth-child(5) {
-        width: 7%;
+        width: 10%;
       }
     }
   }
