@@ -17,18 +17,25 @@ const Navbar = () => {
   const [gggg, setGggg] = useState("");
   const [BoardText, setBoardText] = useState("");
   const [deleteListsd, setDeleteListsd] = useState();
+  const [serComment, setSerComment] = useState("");
 
   const deleteList = async () => {
     const response = await axios.get(
       `http://localhost:7999/board/1/2/searchAll?value=${gggg}`
     );
+    const response2 = await axios.get(
+      `http://localhost:7999/board/1/2/searchAll/comment?value=${gggg}`
+    );
     // console.log(response.data);
     setBoardText(response.data);
+    setSerComment(response2.data);
     console.log(BoardText);
+    console.log(serComment);
     if (response.data != false) {
       navigate("/searchlist", {
         state: {
           test: response.data,
+          test2: response2.data,
         },
       });
     } else if (response.data == false) {
@@ -114,7 +121,8 @@ const Navbar = () => {
               deleteList();
               setDeleteListsd();
               deleteList = { deleteList };
-            }}>
+            }}
+          >
             <Link>
               <ZoomInIcon />
             </Link>
@@ -134,7 +142,8 @@ const Navbar = () => {
                     setLonned(false);
 
                     sessionStorage.clear();
-                  }}>
+                  }}
+                >
                   로그아웃
                 </button>
               </>
@@ -148,7 +157,8 @@ const Navbar = () => {
                     <div class="modal-box relative">
                       <label
                         for="my-modal-1"
-                        class="btn-sm absolute right-6 top-9">
+                        class="btn-sm absolute right-6 top-9"
+                      >
                         ✕
                       </label>
 
@@ -216,7 +226,8 @@ const Navbar = () => {
                                 "userid",
                                 lonned.data.userId
                               );
-                            }}>
+                            }}
+                          >
                             {" "}
                             로그인{" "}
                           </label>
