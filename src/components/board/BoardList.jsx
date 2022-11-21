@@ -41,10 +41,7 @@ const BoardList = ({ lcategory, mcategory, boardList, setBoardList }) => {
           method: "GET",
         });
         setBoardList(data.data);
-        console.log(boardList);
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     };
     getData();
   }, []);

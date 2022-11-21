@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style/BoardPost.scss";
 import axios from "axios";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { BACK_URL } from "../../config";
 
 import { useNavigate } from "react-router-dom";
 
@@ -13,12 +15,7 @@ const BoardPost = ({ lcategory, mcategory }) => {
   const post = async () => {
     try {
       const data = await axios({
-        url:
-          "http://localhost:7999/board/" +
-          lcategory +
-          "/" +
-          mcategory +
-          "/post",
+        url: `${BACK_URL}` + lcategory + "/" + mcategory + "/post",
         method: "POST",
         data: {
           subject: subject,
@@ -40,14 +37,25 @@ const BoardPost = ({ lcategory, mcategory }) => {
   const check = sessionStorage.getItem("logined") || false;
   useEffect(() => {
     if (check) {
-      setLonned(sessionStorage.getItem("user"));
+      setAuthor(sessionStorage.getItem("userid"));
     }
-    setAuthor(lonned);
   }, []);
   return (
     <div className="select-MainDiv">
+      <a href="">
+        <button
+          type="button"
+          onclick={() => {
+            navigate(-1);
+          }}
+        >
+          <h1>
+            <ArrowBackIcon className="icon" />
+            &nbsp; 돌아가기
+          </h1>
+        </button>
+      </a>
       <div class="con">
-        <h1>게시글 작성</h1>
         <div class="article-write">
           <form>
             <div></div>
@@ -74,15 +82,10 @@ const BoardPost = ({ lcategory, mcategory }) => {
               />
             </div>
           </form>
+          <div class="filebox">
+            <input type="file" id="ex_file" />
+          </div>
           <div className="Write_button">
-            <button
-              className="Write_button1"
-              onClick={() => {
-                post();
-              }}
-            >
-              작성 하기
-            </button>
             <button
               className="Write_button2"
               type="button"
@@ -91,6 +94,14 @@ const BoardPost = ({ lcategory, mcategory }) => {
               }}
             >
               돌아기기
+            </button>
+            <button
+              className="Write_button1"
+              onClick={() => {
+                post();
+              }}
+            >
+              작성 하기
             </button>
           </div>
         </div>

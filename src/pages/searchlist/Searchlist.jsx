@@ -1,41 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./Searchlist.scss";
-import axios from "axios";
+import Posts from "../../components/board/posts/Posts";
+import Pagination from "../../components/board/posts/Pagination";
 
 const Searchlist = () => {
+  const [limit, setLimit] = useState(20); // 한 페이지당 보여줄 리스트
+  const [page, setPage] = useState(1); // 현재 페이지
   const location = useLocation();
+  location.state.test.sort(function (a, b) {
+    return b.id - a.id;
+  });
   return (
-    <div className="Searchlist">
-      <div className="Searchlist_Div">
-        <div className="Searchlist_Div1">
-          {location.state.test.map((hhh) => (
-            <div className="earchlistMain" key={hhh}>
-              <div>
-                {" "}
-                <Link to={`../detailPage/${hhh.id}`} state={{ number: hhh.id }}>
-                  {hhh.subject}
-                </Link>
-              </div>
-              <div className="Searchlist_List">
-                <div>{hhh.lcategory} 게시판</div>
-                <div> | </div>
-                <div>{hhh.author}</div>
-                <div> | </div>
-                <div>{hhh.date}</div>
-                <div> | </div>
-                <div>조회 {hhh.views}</div>
-              </div>
-              <div className="Searchlist_Link">
-                <Link to={`../detailPage/${hhh.id}`} state={{ number: hhh.id }}>
-                  {hhh.contents}
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <>
+      <Posts boardList={location.state.test} limit={limit} page={page} />
+      <Pagination
+        total={location.state.test.length}
+        limit={limit}
+        page={page}
+        setPage={setPage}
+      />
+    </>
   );
 };
 

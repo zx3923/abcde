@@ -10,7 +10,7 @@ const Sidbar = () => {
   const [error, setError] = useState(null);
   const [kospi, setKospi] = useState("");
   const [kosdaq, setKosdaq] = useState("");
-
+  const [boardList, setBoardList] = useState([]);
   const [samsung, setSamsung] = useState("");
   const [kakao, setKakao] = useState("");
 
@@ -21,20 +21,17 @@ const Sidbar = () => {
       setTest(null);
       // loading 상태를 true 로 바꿉니다.
       setLoading(true);
+      const data = await axios.get("http://localhost:7999/board/notice/n/get3");
+      setBoardList(data.data);
+
       const response = await axios.get(
         "https://api.upbit.com/v1/ticker?markets=KRW-BTC%2C%20KRW-ETH%2C%20KRW-XRP"
       );
       setTest(response.data); // 데이터는 response.data 안에 들어있습니다.
-
       const kospiGet = await axios.get(
         "http://localhost:7999/chart/Market/get?name=코스피"
       );
       setKospi(kospiGet.data);
-
-      const kosdaqGet = await axios.get(
-        "http://localhost:7999/chart/Market/get?name=코스닥"
-      );
-      setKosdaq(kosdaqGet.data);
 
       const samsungGet = await axios.get(
         "http://localhost:7999/chart/Stock/get?name=삼성전자"
@@ -60,21 +57,22 @@ const Sidbar = () => {
   // 아직 users가 받아와 지지 않았을 때는 아무것도 표시되지 않도록 해줍니다.
   if (!test) return null;
 
-  // if (0 < kospi.avg && kospi.avg < 1) {
-  //   kospi.avg = "0" + kospi.avg;
-  // }
+  if (0 < kospi.avg && kospi.avg < 1) {
+    kospi.avg = "0" + kospi.avg;
+  }
 
-  // if (0 < samsung.avg && samsung.avg < 1) {
-  //   samsung.avg = "0" + samsung.avg;
-  // }
+  if (0 < samsung.avg && samsung.avg < 1) {
+    samsung.avg = "0" + samsung.avg;
+  }
 
-  // if (0 < kakao.avg && kakao.avg < 1) {
-  //   kakao.avg = "0" + kakao.avg;
-  // }
+  if (0 < kakao.avg && kakao.avg < 1) {
+    kakao.avg = "0" + kakao.avg;
+  }
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
   return (
     <div class="Sidbar">
       <div className="Sidbarss">
@@ -83,14 +81,12 @@ const Sidbar = () => {
           <div className="bloc-tabs">
             <button
               className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(1)}
-            >
+              onClick={() => toggleTab(1)}>
               코인
             </button>
             <button
               className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(2)}
-            >
+              onClick={() => toggleTab(2)}>
               증시
             </button>
           </div>
@@ -99,8 +95,7 @@ const Sidbar = () => {
             <div
               className={
                 toggleState === 1 ? "content  active-content" : "content"
-              }
-            >
+              }>
               <div class="aaaaaaa">
                 <div class="img_box">
                   {" "}
@@ -126,8 +121,7 @@ const Sidbar = () => {
                         test[0].signed_change_price > 0
                           ? { color: "red" }
                           : { color: "blue" }
-                      }
-                    >
+                      }>
                       {test[0].signed_change_price
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
@@ -138,8 +132,7 @@ const Sidbar = () => {
                         test[0].signed_change_rate > 0
                           ? { color: "red" }
                           : { color: "blue" }
-                      }
-                    >
+                      }>
                       {" "}
                       {(test[0].signed_change_rate.toFixed(3) * 100).toFixed(
                         2
@@ -177,8 +170,7 @@ const Sidbar = () => {
                           test[1].signed_change_price > 0
                             ? { color: "red" }
                             : { color: "blue" }
-                        }
-                      >
+                        }>
                         {test[1].signed_change_price
                           .toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
@@ -189,8 +181,7 @@ const Sidbar = () => {
                           test[1].signed_change_rate > 0
                             ? { color: "red" }
                             : { color: "blue" }
-                        }
-                      >
+                        }>
                         {" "}
                         {(test[1].signed_change_rate.toFixed(3) * 100).toFixed(
                           2
@@ -226,8 +217,7 @@ const Sidbar = () => {
                         test[2].signed_change_price > 0
                           ? { color: "red" }
                           : { color: "blue" }
-                      }
-                    >
+                      }>
                       {test[2].signed_change_price
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
@@ -238,8 +228,7 @@ const Sidbar = () => {
                         test[2].signed_change_rate > 0
                           ? { color: "red" }
                           : { color: "blue" }
-                      }
-                    >
+                      }>
                       {" "}
                       {(test[2].signed_change_rate.toFixed(3) * 100).toFixed(
                         2
@@ -254,8 +243,7 @@ const Sidbar = () => {
             <div
               className={
                 toggleState === 2 ? "content  active-content" : "content"
-              }
-            >
+              }>
               <div class="tbl_type">
                 <div class="aaaaaaa">
                   <div class="img_box">
@@ -272,8 +260,7 @@ const Sidbar = () => {
                       <span
                         style={
                           kospi.avg > 0 ? { color: "red" } : { color: "blue" }
-                        }
-                      >
+                        }>
                         {kospi.avg} %
                       </span>
                     </div>
@@ -303,8 +290,7 @@ const Sidbar = () => {
                             kosdaq.avg > 0
                               ? { color: "red" }
                               : { color: "blue" }
-                          }
-                        >
+                          }>
                           {kosdaq.avg} %
                         </span>
                       </div>
@@ -337,8 +323,7 @@ const Sidbar = () => {
                       <span
                         style={
                           samsung.avg > 0 ? { color: "red" } : { color: "blue" }
-                        }
-                      >
+                        }>
                         {samsung.avg} %
                       </span>
                     </div>
@@ -379,8 +364,7 @@ const Sidbar = () => {
                       <span
                         style={
                           kakao.avg > 0 ? { color: "red" } : { color: "blue" }
-                        }
-                      >
+                        }>
                         {kakao.avg} %
                       </span>
                     </div>
@@ -418,13 +402,12 @@ const Sidbar = () => {
         <img src="https://i.postimg.cc/52YsHxHG/banner-android.png" />
       </div>
       <div className="SidbarNotice">
-        <div>공지 사항</div>
-        <div>첫번째 공지 사항 입니다.</div>
-        <div>두번째 공지 사항 입니다.</div>
-        <div>세번째 공지 사항 입니다.</div>
-
-        <div>패치 노트</div>
-        <div>문의 / 건의</div>
+        <a href="/Board/notice/n">공지 사항</a>
+        {boardList.map((data) => (
+          <a href={"/Board/notice/n/detail/" + data.id}>{data.subject}</a>
+        ))}
+        <a href="/Board/notice/e">패치 노트</a>
+        <a href="/Board/notice/i">문의 / 건의</a>
       </div>
       <div className="advertisement">
         <img
