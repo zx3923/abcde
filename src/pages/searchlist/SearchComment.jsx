@@ -19,7 +19,7 @@ const SearchComment = ({ commentList, postPerPage, currentPage2 }) => {
                     "/" +
                     data.mcategory +
                     "/detail/" +
-                    data.id
+                    data.boardIndex
                   }
                 >
                   {data.contents}

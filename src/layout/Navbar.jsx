@@ -30,15 +30,15 @@ const Navbar = () => {
     setBoardText(response.data);
     setSerComment(response2.data);
     console.log(BoardText);
-    console.log(serComment);
-    if (response.data != false) {
+    console.log(response2.data);
+    if (response.data != false || response2.data != false) {
       navigate("/searchlist", {
         state: {
           test: response.data,
           test2: response2.data,
         },
       });
-    } else if (response.data == false) {
+    } else if (response.data == false && response2.data == false) {
       alert("입력하신 정보가 없습니다");
     }
   };
@@ -119,8 +119,6 @@ const Navbar = () => {
           <button
             onClick={() => {
               deleteList();
-              setDeleteListsd();
-              deleteList = { deleteList };
             }}
           >
             <Link>
@@ -133,7 +131,9 @@ const Navbar = () => {
           <div className="Hader_Login1">
             {lonned ? (
               <>
-                <span className="navbar_span">{check}</span>
+                <span className="navbar_span">
+                  <Link to="/Privacy">{check}</Link>
+                </span>
 
                 <span className="navbar_span1">님</span>
                 <button
@@ -201,8 +201,6 @@ const Navbar = () => {
                               setName(lonned.data.username);
 
                               setId(lonned.data.userId);
-
-                              setId(lonned.data.userName);
                               if (lonned.data.aboolean == true) {
                                 setLonned(lonned.data);
                                 setLonned(lonned.data.aboolean);
@@ -210,8 +208,9 @@ const Navbar = () => {
                                 alert("로그인 성공");
                               } else if (lonned.data.aboolean == false) {
                                 setLonned(lonned.data.userName);
-
-                                alert("빈칸을 확이나세요");
+                                alert(
+                                  "입력하신 정보를 다시한번 확인하여주세요."
+                                );
                               }
                               console.log(lonned);
                               sessionStorage.setItem(
