@@ -98,7 +98,7 @@ const BoardDetail = ({ lcategory, mcategory, boardList }) => {
           method: "POST",
           data: {
             contents: comment,
-            author: sessionStorage.getItem("userid"),
+            author: sessionStorage.getItem("user"),
             id: boardid,
           },
         });
@@ -159,14 +159,16 @@ const BoardDetail = ({ lcategory, mcategory, boardList }) => {
                         mcategory +
                         "/update/" +
                         boardDetail.id
-                      }>
+                      }
+                    >
                       수정
                     </a>
                     <button
                       className="DetailPageButton2"
                       onClick={() => {
                         deleteList();
-                      }}>
+                      }}
+                    >
                       삭제
                     </button>
                   </div>
@@ -206,7 +208,8 @@ const BoardDetail = ({ lcategory, mcategory, boardList }) => {
                         <button
                           onClick={() => {
                             comdelete(list.id);
-                          }}>
+                          }}
+                        >
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </button>
@@ -235,7 +238,8 @@ const BoardDetail = ({ lcategory, mcategory, boardList }) => {
               className="DetailPage_button1"
               onClick={() => {
                 compost();
-              }}>
+              }}
+            >
               등록
             </button>
           </div>

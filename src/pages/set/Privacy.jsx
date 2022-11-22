@@ -3,6 +3,7 @@ import { recoilPersist } from "recoil-persist";
 import "./Privacy.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import colorObject from "daisyui/src/colors";
 
 const Privacy = () => {
   const [lonned, setLonned] = useState(false);
@@ -12,19 +13,29 @@ const Privacy = () => {
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
+  const [usePassword, setUsePassword] = useState("");
+  const [signOutPassword, setSignOutPassword] = useState("");
 
   const navigate = useNavigate();
 
   const check = sessionStorage.getItem("logined") || false;
   useEffect(() => {
     if (check) {
-      setLonned(sessionStorage.getItem("user"));
+      setUserName(sessionStorage.getItem("user"));
       setUserId(sessionStorage.getItem("userid"));
     }
   }, []);
 
   return (
     <div className="Privacy">
+      <button
+        onClick={() => {
+          console.log(userName);
+          console.log(userId);
+        }}
+      >
+        테스트
+      </button>
       <div className="top">
         <h1>회원 정보 수정 / 회원 탈퇴</h1>
         <h2></h2>
@@ -61,7 +72,8 @@ const Privacy = () => {
                 vlaue={password}
                 placeholder="비밀번호 입력하세요"
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setUsePassword(e.target.value);
+                  console.log(usePassword);
                 }}
               />
               <h4>현재 비빌번호를 입력해주세요.</h4>
@@ -99,7 +111,13 @@ const Privacy = () => {
                 const lonned = await axios({
                   url: "http://localhost:7999/account/pwReset",
                   method: "patch",
-                  data: { userId, userName, password, confirmPassword },
+                  data: {
+                    userId,
+                    userName,
+                    usePassword,
+                    password,
+                    confirmPassword,
+                  },
                 });
 
                 if (lonned.data == true) {
@@ -116,10 +134,53 @@ const Privacy = () => {
                   setLonned(lonned.data);
                   alert("비밀번호를 확인해주세요");
                 }
-              }}>
+              }}
+            >
               수정하기
             </button>
-            <button className="buttonDivsds2">회원탈퇴</button>
+            <form>
+              <div>
+                <label>비밀번호를 입력</label>
+                <input
+                  type="password"
+                  vlaue={signOutPassword}
+                  placeholder="비밀번호 입력하세요"
+                  onChange={(e) => {
+                    setSignOutPassword(e.target.value);
+                  }}
+                />
+              </div>
+            </form>
+            <button
+              type="reset"
+              onClick={async () => {
+                const signOut = await axios({
+                  url: "http://localhost:7999/account/signOut",
+                  method: "delete",
+                  data: {
+                    userId,
+                    userName,
+                    usePassword: signOutPassword,
+                    password: signOutPassword,
+                    confirmPassword: signOutPassword,
+                  },
+                });
+                if (signOut.data == true) {
+                  console.log(signOut.data);
+                  alert("회원탈퇴");
+                  setLonned(false);
+                  sessionStorage.clear();
+                  navigate("/");
+                  window.location.reload();
+                } else if (signOut.data == false) {
+                  console.log(signOut.data);
+                  alert("비밀번호를 확인하세요");
+                  window.location.reload();
+                }
+              }}
+            >
+              회원탈퇴
+            </button>
           </div>
         </div>
       </div>

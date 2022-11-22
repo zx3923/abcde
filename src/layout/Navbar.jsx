@@ -142,6 +142,7 @@ const Navbar = () => {
                     setLonned(false);
 
                     sessionStorage.clear();
+                    window.location.reload();
                   }}
                 >
                   로그아웃
@@ -206,6 +207,7 @@ const Navbar = () => {
                                 setLonned(lonned.data.aboolean);
                                 setTimeout(() => {});
                                 alert("로그인 성공");
+                                window.location.reload();
                               } else if (lonned.data.aboolean == false) {
                                 setLonned(lonned.data.userName);
                                 alert(

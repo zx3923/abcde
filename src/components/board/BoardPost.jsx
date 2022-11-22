@@ -37,7 +37,7 @@ const BoardPost = ({ lcategory, mcategory }) => {
   const check = sessionStorage.getItem("logined") || false;
   useEffect(() => {
     if (check) {
-      setAuthor(sessionStorage.getItem("userid"));
+      setAuthor(sessionStorage.getItem("user"));
     }
   }, []);
   return (
@@ -47,7 +47,8 @@ const BoardPost = ({ lcategory, mcategory }) => {
           type="button"
           onclick={() => {
             navigate(-1);
-          }}>
+          }}
+        >
           <h1>
             <ArrowBackIcon className="icon" />
             &nbsp; 돌아가기
@@ -90,14 +91,16 @@ const BoardPost = ({ lcategory, mcategory }) => {
               type="button"
               onclick={() => {
                 navigate(-1);
-              }}>
+              }}
+            >
               돌아기기
             </button>
             <button
               className="Write_button1"
               onClick={() => {
                 post();
-              }}>
+              }}
+            >
               작성 하기
             </button>
           </div>
